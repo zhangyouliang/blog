@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>linux 实用命令 | 张有亮|个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="# sed比如，我想替换文件中的 properties 为 property ,可以使用1sed  &apos;s/properties/property/g&apos;  build.xml 这种方式，其实并没有修改build.xml文件的内容。如果想保存修改，通常的做法就需要重定向到另外的一个文件 123sed  &apos;s/properties/property/g&apos;  build.xml &amp;gt; build.xm">
+<meta name="keywords" content="LINUX">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux 实用命令">
+<meta property="og:url" content="https://www.whatdy.com/2018/03/31/linux-实用命令/index.html">
+<meta property="og:site_name" content="张有亮|个人博客">
+<meta property="og:description" content="# sed比如，我想替换文件中的 properties 为 property ,可以使用1sed  &apos;s/properties/property/g&apos;  build.xml 这种方式，其实并没有修改build.xml文件的内容。如果想保存修改，通常的做法就需要重定向到另外的一个文件 123sed  &apos;s/properties/property/g&apos;  build.xml &amp;gt; build.xm">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-31T06:38:41.880Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux 实用命令">
+<meta name="twitter:description" content="# sed比如，我想替换文件中的 properties 为 property ,可以使用1sed  &apos;s/properties/property/g&apos;  build.xml 这种方式，其实并没有修改build.xml文件的内容。如果想保存修改，通常的做法就需要重定向到另外的一个文件 123sed  &apos;s/properties/property/g&apos;  build.xml &amp;gt; build.xm">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="张有亮|个人博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-116094256-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+        <meta name="google-site-verification" content="DXpu9SRLnjngaDaCp__H6gsevHDdRPDpL8VFVSy0wUs" />
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?1ad99998726693e98d7f2e917d506e0b";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                
+                <span class="site-title">张有亮|个人博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+                    <a class="main-nav-link" href="/atom.xml">RSS</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar2.jpeg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                    <td><a class="main-nav-link" href="/atom.xml">RSS</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar2.jpeg" />
+            <h2 id="name">张有亮</h2>
+            <h3 id="title">developer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Shanghai, China</span>
+            <a id="follow" target="_blank" href="https://github.com/zhangyouliang/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                20
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                12
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/zhangyouliang" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/atom.xml" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-linux-实用命令" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            linux 实用命令
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/03/31/linux-实用命令/">
+            <time datetime="2018-03-31T06:30:01.000Z" itemprop="datePublished">2018-03-31</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/LINUX/">LINUX</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/LINUX/">LINUX</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h3 id="sed"><a href="#sed" class="headerlink" title="# sed"></a># sed</h3><p>比如，我想替换文件中的 properties 为 property ,可以使用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed  <span class="string">'s/properties/property/g'</span>  build.xml</span><br></pre></td></tr></table></figure></p>
+<p>这种方式，其实并没有修改build.xml文件的内容。如果想保存修改，通常的做法就需要重定向到另外的一个文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed  <span class="string">'s/properties/property/g'</span>  build.xml &gt; build.xml.tmp</span><br><span class="line"><span class="comment"># 如果想直接修改源文件，而没有这样的过程，可以用下面的命令</span></span><br><span class="line">sed  -i <span class="string">'s/properties/property/g'</span>  build.xml</span><br></pre></td></tr></table></figure>
+<h3 id="列出当前目录全部的目录"><a href="#列出当前目录全部的目录" class="headerlink" title="# 列出当前目录全部的目录"></a># 列出当前目录全部的目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 三种方式</span></span><br><span class="line">find . -<span class="built_in">type</span> d -maxdepth 1</span><br><span class="line">ls -F | grep <span class="string">'/$'</span></span><br><span class="line">ls -l | grep <span class="string">'^d'</span></span><br></pre></td></tr></table></figure>
+<h3 id="列出当前目录下的所有文件（包括隐藏文件）的绝对路径，-对目录不做递归"><a href="#列出当前目录下的所有文件（包括隐藏文件）的绝对路径，-对目录不做递归" class="headerlink" title="# 列出当前目录下的所有文件（包括隐藏文件）的绝对路径， 对目录不做递归"></a># 列出当前目录下的所有文件（包括隐藏文件）的绝对路径， 对目录不做递归</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls | sed <span class="string">"s:^:`pwd`/:"</span></span><br><span class="line">find <span class="variable">$PWD</span> -maxdepth 1 | xargs ls -ld</span><br></pre></td></tr></table></figure>
+<h3 id="nl"><a href="#nl" class="headerlink" title="# nl"></a># nl</h3><p>显示文件的行数</p>
+<h3 id="head"><a href="#head" class="headerlink" title="# head"></a># head</h3><p>显示前几行</p>
+<h3 id="sort"><a href="#sort" class="headerlink" title="# sort"></a># sort</h3><p>按照顺序排序</p>
+<h3 id="watch"><a href="#watch" class="headerlink" title="# watch"></a># watch</h3><p>每隔一秒高亮显示网络链接数的变化情况</p>
+<p>watch -n 1 -d netstat -ant</p>
+<p>每隔一秒高亮显示http链接数的变化情况</p>
+<p>watch -n 1 -d ‘pstree|grep http’</p>
+<h3 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h3><p>查看文件并且显示行数<br>cat -n /etc/inetd.conf</p>
+<h3 id="tee"><a href="#tee" class="headerlink" title="# tee"></a># tee</h3><p>把数据重定向到给定<strong>文件</strong>和<strong>屏幕上</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 将 ls 的 stdin 重定向到文件,并且输出到屏幕上面</span><br><span class="line">ls | tee out.txt</span><br></pre></td></tr></table></figure>
+<h3 id="wget"><a href="#wget" class="headerlink" title="# wget"></a># wget</h3><p><a href="http://man.linuxde.net/wget" target="_blank" rel="noopener">参考</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-a&lt;日志文件&gt;：在指定的日志文件中记录资料的执行过程；</span><br><span class="line">-c：继续执行上次终端的任务；</span><br><span class="line">-O filename 将文件保存为 filename</span><br><span class="line">-i&lt;文件&gt;：从指定文件获取要下载的URL地址；</span><br><span class="line">--limit-rate=300k 限速下载</span><br><span class="line">-c 断点续传</span><br><span class="line">--user-agent 伪装代理名称下载</span><br></pre></td></tr></table></figure>
+<h3 id="find"><a href="#find" class="headerlink" title="# find"></a># find</h3><p><a href="http://www.cnblogs.com/peida/archive/2013/02/26/2932972.html" target="_blank" rel="noopener">参考</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">atime n  查找系统中最后N分钟访问的文件</span><br><span class="line">amin n  查找系统中最后n*24小时访问的文件</span><br><span class="line"># 查找今天的(24小时内)</span><br><span class="line">find . -atime -1</span><br><span class="line"># 查找今天之前的(24小时内)</span><br><span class="line">find . -atime +1</span><br><span class="line"># 搜索当前目录的以 .log 结尾,一天内,权限问 600 ,大小大于 1 b 的普通文件,并且按照普通方式输出</span><br><span class="line">find . -type f -name &apos;*.log&apos; -atime -1 -perm 600 -size +1c -print</span><br></pre></td></tr></table></figure></p>
+<h3 id="xargs"><a href="#xargs" class="headerlink" title="# xargs"></a># xargs</h3><p>xargs 命令是一个其他命令参数传递一个过滤器,擅长将stdin转化成命令参数,xargs 能够处理管道或者 stdin 并将其转化成特定命令的命令参数.</p>
+<p>xargs 的默认命令是echo ,空格是默认定界符.<br>这也就意味着通过管道传递给xargs包含<strong>换行</strong>和<strong>空白</strong>,不过通过xargs的处理,换行和空白将被空格取代</p>
+<p>cat abc | xargs echo &lt;=====&gt; cat abc | xargs</p>
+<p>测试文件:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ cat abc | xargs      </span><br><span class="line">a b c d e f g h i j k l m n o p q r s t u v w x y z</span><br><span class="line">➜  ~ cat abc | xargs -n3</span><br><span class="line">a b c</span><br><span class="line">d e f</span><br><span class="line">g h i</span><br><span class="line">j k l</span><br><span class="line">m n o</span><br><span class="line">p q r</span><br><span class="line">s t u</span><br><span class="line">v w x</span><br><span class="line">y z</span><br><span class="line">➜  ~ echo &quot;nameXnameXnameXname&quot; | xargs -dX</span><br><span class="line">name name name name</span><br></pre></td></tr></table></figure></p>
+<p>读取 stdin,将格式化后的参数传递给命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ cat sk.sh                 </span><br><span class="line">#!/bin/sh</span><br><span class="line"></span><br><span class="line">echo $*</span><br></pre></td></tr></table></figure>
+<p>测试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ cat arg                         </span><br><span class="line">aaa</span><br><span class="line">bbb</span><br><span class="line">ccc</span><br><span class="line">➜  ~ cat arg | xargs -I &#123;&#125; ./sk.sh &#123;&#125;</span><br><span class="line">aaa</span><br><span class="line">bbb</span><br><span class="line">ccc</span><br></pre></td></tr></table></figure></p>
+<p>xargs 的一个<code>选项 -I</code> , 使用 -I 指定一个<strong>替换字符串{}</strong>,这个字符串在xargs拓展时会被替换掉,每一个参数命令都会被执行一次：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ cat abc | xargs -I &#123;&#125; ./sk.sh &quot;==&gt;&quot; &#123;&#125; &quot;&lt;==&quot;</span><br><span class="line">==&gt; a b c d e f g &lt;==</span><br><span class="line">==&gt; h i j k l m n &lt;==</span><br><span class="line">==&gt; o p q &lt;==</span><br><span class="line">==&gt; r s t &lt;==</span><br><span class="line">==&gt; u v w x y z &lt;==</span><br></pre></td></tr></table></figure>
+<p>xargs 结合 find 使用</p>
+<p>用rm 删除太多的文件时候，可能得到一个错误信息：/bin/rm Argument list too long. 用xargs去避免这个问题</p>
+<p>xargs -0 将\0作为定界符<br>统计一个源代码目录中所有php 文件的行数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">## 正常输出</span><br><span class="line">➜  Controllers git:(master) find . -type f -name &apos;*.php&apos; -print</span><br><span class="line">./Controller.php</span><br><span class="line">./FetchController.php</span><br><span class="line">./LoginController.php</span><br><span class="line">./SockController.php</span><br><span class="line">./TestController.php</span><br><span class="line">## 将 \n 替换为 NULL</span><br><span class="line"></span><br><span class="line">➜  Controllers git:(master) find . -type f -name &apos;*.php&apos; -print0</span><br><span class="line"></span><br><span class="line">./Controller.php./FetchController.php./LoginController.php./SockController.php./TestController.php</span><br><span class="line"></span><br><span class="line">## 将 find 中的数据的 \n 替换为 NULL,同时 xargs 将 NULL 作为定界符</span><br><span class="line">➜  Controllers git:(master) find . -type f -name &apos;*.php&apos; -print0 | xargs -0 wc -l</span><br><span class="line">      71 ./Controller.php</span><br><span class="line">      95 ./FetchController.php</span><br><span class="line">      54 ./LoginController.php</span><br><span class="line">     112 ./SockController.php</span><br><span class="line">      30 ./TestController.php</span><br><span class="line">     362 total</span><br></pre></td></tr></table></figure>
+<p>查找所有 jpg 文件,并且压缩他们</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -name &apos;*.jpg&apos; -print | xargs tar -czvf images.tar.gz</span><br></pre></td></tr></table></figure>
+<p>下载<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat url-list.txt | xargs wget -c</span><br></pre></td></tr></table></figure></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone">QQ空间</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+</div>
+
+            
+    
+        <a href="https://www.whatdy.com/2018/03/31/linux-实用命令/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://www.whatdy.com/2018/03/31/linux-实用命令/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/03/31/python-实用技巧/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    python 实用技巧
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2018/03/31/docker-CMD-和-ENTRYPOINT/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">docker CMD 和 ENTRYPOINT</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/php/">php</a></p>
+                            <p class="item-title"><a href="/2018/04/06/各种实用的东东/" class="title">各种实用的东东</a></p>
+                            <p class="item-date"><time datetime="2018-04-05T16:25:01.000Z" itemprop="datePublished">2018-04-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/04/05/nginx-重写规则/" class="title">nginx 重写规则</a></p>
+                            <p class="item-date"><time datetime="2018-04-05T09:25:35.000Z" itemprop="datePublished">2018-04-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/git/">git</a></p>
+                            <p class="item-title"><a href="/2018/03/31/git-常用命令/" class="title">git 常用命令</a></p>
+                            <p class="item-date"><time datetime="2018-03-31T13:34:40.000Z" itemprop="datePublished">2018-03-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/docker/">docker</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/docker/python/">python</a></p>
+                            <p class="item-title"><a href="/2018/03/31/docker-supervisor-实现后台运行程序/" class="title">docker+supervisor 实现后台运行程序</a></p>
+                            <p class="item-date"><time datetime="2018-03-31T06:50:51.000Z" itemprop="datePublished">2018-03-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/python/">python</a></p>
+                            <p class="item-title"><a href="/2018/03/31/python-实用技巧/" class="title">python 实用技巧</a></p>
+                            <p class="item-date"><time datetime="2018-03-31T06:33:19.000Z" itemprop="datePublished">2018-03-31</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/LINUX/">LINUX</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/docker/python/">python</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">11</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">18</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/LINUX/">LINUX</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络安全/">网络安全</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/LINUX/" style="font-size: 10px;">LINUX</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/php/" style="font-size: 13.33px;">php</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/shell/" style="font-size: 13.33px;">shell</a> <a href="/tags/网络安全/" style="font-size: 13.33px;">网络安全</a>
+        </div>
+    </div>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 Zhangyouliang<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'https://www.whatdy.com/2018/03/31/linux-实用命令/';
+        
+        this.page.identifier = 'linux-实用命令';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'http-www-whatdy-com' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>spring 注解 | 张有亮|个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="SpringCloud 注解# @SpringBootApplication等价于@Configuration、@EnableAutoConfiguration、@ComponentScan, 查看SpringBootApplication注解可以发现 @ComponentScan 并没有添加任何的参数，它会自动扫描工程里所有的@Component, @Service, @Repository,">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring 注解">
+<meta property="og:url" content="https://www.whatdy.com/2018/03/24/spring-注解/index.html">
+<meta property="og:site_name" content="张有亮|个人博客">
+<meta property="og:description" content="SpringCloud 注解# @SpringBootApplication等价于@Configuration、@EnableAutoConfiguration、@ComponentScan, 查看SpringBootApplication注解可以发现 @ComponentScan 并没有添加任何的参数，它会自动扫描工程里所有的@Component, @Service, @Repository,">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-23T17:23:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="spring 注解">
+<meta name="twitter:description" content="SpringCloud 注解# @SpringBootApplication等价于@Configuration、@EnableAutoConfiguration、@ComponentScan, 查看SpringBootApplication注解可以发现 @ComponentScan 并没有添加任何的参数，它会自动扫描工程里所有的@Component, @Service, @Repository,">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="张有亮|个人博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-116094256-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+        <meta name="google-site-verification" content="DXpu9SRLnjngaDaCp__H6gsevHDdRPDpL8VFVSy0wUs" />
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?1ad99998726693e98d7f2e917d506e0b";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                
+                <span class="site-title">张有亮|个人博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+                    <a class="main-nav-link" href="/atom.xml">RSS</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar2.jpeg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                    <td><a class="main-nav-link" href="/atom.xml">RSS</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar2.jpeg" />
+            <h2 id="name">张有亮</h2>
+            <h3 id="title">developer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Shanghai, China</span>
+            <a id="follow" target="_blank" href="https://github.com/zhangyouliang/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                20
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                12
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/zhangyouliang" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/atom.xml" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-spring-注解" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            spring 注解
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/03/24/spring-注解/">
+            <time datetime="2018-03-23T17:20:21.000Z" itemprop="datePublished">2018-03-24</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/笔记/">笔记</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/java/">java</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="SpringCloud-注解"><a href="#SpringCloud-注解" class="headerlink" title="SpringCloud 注解"></a>SpringCloud 注解</h1><h3 id="SpringBootApplication"><a href="#SpringBootApplication" class="headerlink" title="# @SpringBootApplication"></a># @SpringBootApplication</h3><p>等价于<code>@Configuration</code>、<code>@EnableAutoConfiguration</code>、<code>@ComponentScan</code>,</p>
+<p>查看<code>SpringBootApplication</code>注解可以发现 <code>@ComponentScan</code> 并没有添加任何的参数，它会自动扫描工程里所有的<code>@Component, @Service, @Repository, @Controller</code>并把它们注册为Spring Beans。</p>
+<h3 id="AutoWired"><a href="#AutoWired" class="headerlink" title="# @AutoWired"></a># @AutoWired</h3><p>自动装载</p>
+<h3 id="Component"><a href="#Component" class="headerlink" title="# @Component"></a># @Component</h3><p>泛指组件，一般用于普通POJO,当组件不好归类的时候，也可以使用这个注解进行标注。</p>
+<h3 id="Service"><a href="#Service" class="headerlink" title="# @Service"></a># @Service</h3><p>用于标注业务层组件</p>
+<h3 id="RestController"><a href="#RestController" class="headerlink" title="# @RestController"></a># @RestController</h3><p>用于标注控制层组件。<code>@RestController</code>同时包含了<code>@Controller、@ResponseBod</code>y。</p>
+<h3 id="GetMapping"><a href="#GetMapping" class="headerlink" title="# @GetMapping"></a># @GetMapping</h3><p>也是一个组合注解，相当于@RequestMapping(method = RequestMethod.GET)的缩写。 类似的还有<code>@PostMapping、@PutMapping、@DeleteMapping</code>。</p>
+<h3 id="PathVariable"><a href="#PathVariable" class="headerlink" title="# @PathVariable"></a># @PathVariable</h3><p>这里出现了<code>@PathVariable，@Pathvariable</code>注解可以绑定占位符传过来的值到方法的参数上。</p>
+<h3 id="RequestParam"><a href="#RequestParam" class="headerlink" title="# @RequestParam"></a># @RequestParam</h3><p>从请求中提取参数,如果传入参数名字和方法参数名字不一致，可以给@RequestParam的属性赋值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@PostMapping(value = &quot;login&quot;)</span><br><span class="line">public void login(@RequestParam(&quot;account&quot;) String name, @RequestParam String password) &#123;</span><br><span class="line">    System.out.println(name + &quot;:&quot; + password);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="RequestBody"><a href="#RequestBody" class="headerlink" title="# @RequestBody"></a># @RequestBody</h3><p>可以用来解析json字符串(还可以解析xml)，并将字符串映射到对应的实体中，实体的字段名和json中的键名要对应。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@PostMapping(path = &quot;register&quot;)</span><br><span class="line">public String registerUser(@RequestBody User user) &#123;</span><br><span class="line">    return user.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="RequestHeader"><a href="#RequestHeader" class="headerlink" title="# @RequestHeader"></a># @RequestHeader</h3><p>注解用来将请求头的内容绑定到方法参数上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@PostMapping(value = &quot;login&quot;)</span><br><span class="line">public void login(@RequestHeader(&quot;access_token&quot;) String accessToken,@RequestParam String name) &#123;</span><br><span class="line">    System.out.println(&quot;accessToken:&quot; + accessToken);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@Value 为了简化从 properties 中取配置,可以使用 @Value</p>
+<p>application.properties</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Value(&quot;$&#123;wx_appid&#125;&quot;)</span><br><span class="line">private String appid;</span><br></pre></td></tr></table></figure>
+<h3 id="Valid"><a href="#Valid" class="headerlink" title="# @Valid"></a># @Valid</h3><p>网上一大片使用@Valid失效不能用的情况。为什么呢？</p>
+<p>1.@Valid必需使用在以@RequestBody接收参数的情况下。</p>
+<p>2.使用ajax以POST方式提示数据，禁止用Fiddler以及浏览器直接访问的方式测试接口</p>
+<p>3.用&lt;mvc:annotation-driven /&gt;添加注解驱动。</p>
+<p>4.@Valid是应用在javabean上的校验。</p>
+<p>全部参数校验如下：</p>
+<p>空检查</p>
+<p>@Null       验证对象是否为null</p>
+<p>@NotNull    验证对象是否不为null, 无法查检长度为0的字符串</p>
+<p>@NotBlank 检查约束字符串是不是Null还有被Trim的长度是否大于0,只对字符串,且会去掉前后空格.</p>
+<p>@NotEmpty 检查约束元素是否为NULL或者是EMPTY.</p>
+<p>Booelan检查</p>
+<p>@AssertTrue     验证 Boolean 对象是否为 true </p>
+<p>@AssertFalse    验证 Boolean 对象是否为 false </p>
+<p>长度检查</p>
+<p>@Size(min=, max=) 验证对象（Array,Collection,Map,String）长度是否在给定的范围之内 </p>
+<p>@Length(min=, max=)验证注解的元素值长度在min和max区间内</p>
+<p>日期检查</p>
+<p>@Past           验证 Date 和 Calendar 对象是否在当前时间之前 </p>
+<p>@Future     验证 Date 和 Calendar 对象是否在当前时间之后 </p>
+<p>@Pattern    验证 String 对象是否符合正则表达式的规则</p>
+<p>数值检查，建议使用在Stirng,Integer类型，不建议使用在int类型上，因为表单值为“”时无法转换为int，但可以转换为Stirng为””,Integer为null</p>
+<p>@Min(value=””)            验证 Number 和 String 对象是否大等于指定的值 </p>
+<p>@Max(value=””)             验证 Number 和 String 对象是否小等于指定的值 </p>
+<p>@DecimalMax(value=值) 被标注的值必须不大于约束中指定的最大值. 这个约束的参数是一个通过BigDecimal定义的最大值的字符串表示.小数存在精度</p>
+<p>@DecimalMin(value=值) 被标注的值必须不小于约束中指定的最小值. 这个约束的参数是一个通过BigDecimal定义的最小值的字符串表示.小数存在精度</p>
+<p>@Digits     验证 Number 和 String 的构成是否合法 </p>
+<p>@Digits(integer=,fraction=)验证字符串是否是符合指定格式的数字，interger指定整数精度，fraction指定小数精度。</p>
+<p>@Range(min=, max=) 检查数字是否介于min和max之间.</p>
+<p>@Range(min=10000,max=50000,message=”range.bean.wage”)</p>
+<p>private BigDecimal wage;</p>
+<p>@Valid 递归的对关联对象进行校验, 如果关联对象是个集合或者数组,那么对其中的元素进行递归校验,如果是一个map,则对其中的值部分进行校验.(是否进行递归验证)</p>
+<p>@CreditCardNumber信用卡验证</p>
+<p>@Email  验证是否是邮件地址，如果为null,不进行验证，算通过验证。</p>
+<p>@ScriptAssert(lang=,script=, alias=)</p>
+<p>@URL(protocol=,host=,port=,regexp=, flags=)</p>
+<h3 id="Scope"><a href="#Scope" class="headerlink" title="# @Scope"></a># @Scope</h3><p>singleton：单例，即容器里只有一个实例对象。</p>
+<p>request：对每一次HTTP请求都会产生一个新的bean，同时该bean仅在当前HTTP request内有效</p>
+<p>prototype：多对象，每一次请求都会产生一个新的bean实例</p>
+<h3 id="元注解包括-Retention-Target-Document-Inherited"><a href="#元注解包括-Retention-Target-Document-Inherited" class="headerlink" title="# 元注解包括 @Retention  @Target @Document @Inherited"></a># 元注解包括 @Retention  @Target @Document @Inherited</h3><p><strong>@Retention: 定义注解的保留策略：</strong></p>
+<p>@Retention(RetentionPolicy.SOURCE)   //注解仅存在于源码中，在class字节码文件中不包含</p>
+<p>@Retention(RetentionPolicy.CLASS)     //默认的保留策略，注解会在class字节码文件中存在，但运行时无法获得，</p>
+<p>@Retention(RetentionPolicy.RUNTIME)  //注解会在class字节码文件中存在，在运行时可以通过反射获取到</p>
+<p><strong>@Target：定义注解的作用目标:</strong></p>
+<p>@Target(ElementType.TYPE)   //接口、类、枚举、注解</p>
+<p>@Target(ElementType.FIELD) //字段、枚举的常量</p>
+<p>@Target(ElementType.METHOD) //方法</p>
+<p>@Target(ElementType.PARAMETER) //方法参数</p>
+<p>@Target(ElementType.CONSTRUCTOR)  //构造函数</p>
+<p>@Target(ElementType.LOCAL_VARIABLE)//局部变量</p>
+<p>@Target(ElementType.ANNOTATION_TYPE)//注解</p>
+<p>@Target(ElementType.PACKAGE) ///包   </p>
+<p> 由以上的源码可以知道，他的elementType 可以有多个，一个注解可以为类的，方法的，字段的等等</p>
+<p><strong>@Document：说明该注解将被包含在javadoc中</strong></p>
+<p><strong>@Inherited：说明子类可以继承父类中的该注解</strong></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone">QQ空间</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+</div>
+
+            
+    
+        <a href="https://www.whatdy.com/2018/03/24/spring-注解/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://www.whatdy.com/2018/03/24/spring-注解/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/03/24/spring-boot-发送网络请求/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    spring boot 发送网络请求
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2018/03/21/阿里云支持-ipv6/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">阿里云支持 ipv6</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/php/">php</a></p>
+                            <p class="item-title"><a href="/2018/04/06/各种实用的东东/" class="title">各种实用的东东</a></p>
+                            <p class="item-date"><time datetime="2018-04-05T16:25:01.000Z" itemprop="datePublished">2018-04-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/04/05/nginx-重写规则/" class="title">nginx 重写规则</a></p>
+                            <p class="item-date"><time datetime="2018-04-05T09:25:35.000Z" itemprop="datePublished">2018-04-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/git/">git</a></p>
+                            <p class="item-title"><a href="/2018/03/31/git-常用命令/" class="title">git 常用命令</a></p>
+                            <p class="item-date"><time datetime="2018-03-31T13:34:40.000Z" itemprop="datePublished">2018-03-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/docker/">docker</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/docker/python/">python</a></p>
+                            <p class="item-title"><a href="/2018/03/31/docker-supervisor-实现后台运行程序/" class="title">docker+supervisor 实现后台运行程序</a></p>
+                            <p class="item-date"><time datetime="2018-03-31T06:50:51.000Z" itemprop="datePublished">2018-03-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/python/">python</a></p>
+                            <p class="item-title"><a href="/2018/03/31/python-实用技巧/" class="title">python 实用技巧</a></p>
+                            <p class="item-date"><time datetime="2018-03-31T06:33:19.000Z" itemprop="datePublished">2018-03-31</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/LINUX/">LINUX</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/docker/python/">python</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">11</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">18</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/LINUX/">LINUX</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络安全/">网络安全</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/LINUX/" style="font-size: 10px;">LINUX</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/php/" style="font-size: 13.33px;">php</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/shell/" style="font-size: 13.33px;">shell</a> <a href="/tags/网络安全/" style="font-size: 13.33px;">网络安全</a>
+        </div>
+    </div>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 Zhangyouliang<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'https://www.whatdy.com/2018/03/24/spring-注解/';
+        
+        this.page.identifier = 'spring-注解';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'http-www-whatdy-com' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

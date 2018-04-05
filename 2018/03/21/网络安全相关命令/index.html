@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>网络安全相关命令 | 张有亮|个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="# mac1234## 获取全部 网络服务networksetup -listallnetworkservices## 获取 wifi 的信息networksetup -getinfo Wi-Fi # ICMPICMP (Internet Control Message Protocol) # 路由表123456789101112131415## ===&amp;gt; mac ## 列出 route t">
+<meta name="keywords" content="shell,网络安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络安全相关命令">
+<meta property="og:url" content="https://www.whatdy.com/2018/03/21/网络安全相关命令/index.html">
+<meta property="og:site_name" content="张有亮|个人博客">
+<meta property="og:description" content="# mac1234## 获取全部 网络服务networksetup -listallnetworkservices## 获取 wifi 的信息networksetup -getinfo Wi-Fi # ICMPICMP (Internet Control Message Protocol) # 路由表123456789101112131415## ===&amp;gt; mac ## 列出 route t">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-21T13:11:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络安全相关命令">
+<meta name="twitter:description" content="# mac1234## 获取全部 网络服务networksetup -listallnetworkservices## 获取 wifi 的信息networksetup -getinfo Wi-Fi # ICMPICMP (Internet Control Message Protocol) # 路由表123456789101112131415## ===&amp;gt; mac ## 列出 route t">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="张有亮|个人博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-116094256-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+        <meta name="google-site-verification" content="DXpu9SRLnjngaDaCp__H6gsevHDdRPDpL8VFVSy0wUs" />
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?1ad99998726693e98d7f2e917d506e0b";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                
+                <span class="site-title">张有亮|个人博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+                    <a class="main-nav-link" href="/atom.xml">RSS</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar2.jpeg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                    <td><a class="main-nav-link" href="/atom.xml">RSS</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar2.jpeg" />
+            <h2 id="name">张有亮</h2>
+            <h3 id="title">developer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Shanghai, China</span>
+            <a id="follow" target="_blank" href="https://github.com/zhangyouliang/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                20
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                12
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/zhangyouliang" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/atom.xml" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-网络安全相关命令" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            网络安全相关命令
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/03/21/网络安全相关命令/">
+            <time datetime="2018-03-20T16:26:14.000Z" itemprop="datePublished">2018-03-21</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/笔记/">笔记</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/shell/">shell</a>, <a class="tag-link" href="/tags/网络安全/">网络安全</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h3 id="mac"><a href="#mac" class="headerlink" title="# mac"></a># mac</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 获取全部 网络服务</span></span></span><br><span class="line">networksetup -listallnetworkservices</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 获取 wifi 的信息</span></span></span><br><span class="line">networksetup -getinfo Wi-Fi</span><br></pre></td></tr></table></figure>
+<h3 id="ICMP"><a href="#ICMP" class="headerlink" title="# ICMP"></a># ICMP</h3><p>ICMP (Internet Control Message Protocol)</p>
+<h3 id="路由表"><a href="#路由表" class="headerlink" title="# 路由表"></a># 路由表</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># ===&gt; mac </span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 列出 route table</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> netstat -nr</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 只显示 IPV4 路由</span></span></span><br><span class="line">netstat -nr -f inet</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 只显示 IPV6 路由</span></span></span><br><span class="line">netstat -nr -f inet6</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># route 操作 route table</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># ===&gt; linux</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 列出 route,以及操作 route table</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> route</span></span><br><span class="line">Kernel IP routing table</span><br><span class="line">Destination     Gateway         Genmask         Flags Metric Ref    Use Iface</span><br><span class="line">default         172.16.79.253   0.0.0.0         UG    0      0        0 eth0</span><br></pre></td></tr></table></figure>
+<p>向路由表添加一个路由信息 一般来说，都是为了能访问别的子网才设置路由的</p>
+<p>操作 route table<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">route add -net 224.0.0.0 netmask 240.0.0.0 reject</span><br><span class="line">route del -net 224.0.0.0 netmask 240.0.0.0 reject</span><br></pre></td></tr></table></figure></p>
+<p>参考: <a href="http://luodw.cc/2015/12/30/network-command/" target="_blank" rel="noopener">http://luodw.cc/2015/12/30/network-command/</a><br><a href="http://network.51cto.com/art/201503/469761.htm" target="_blank" rel="noopener">http://network.51cto.com/art/201503/469761.htm</a></p>
+<p>分类:<br>（1）链路层协议发现的路由（即是直连路由）<br>（2）静态路由<br>（3）动态路由协议发现的路由。</p>
+<h3 id="route-命令"><a href="#route-命令" class="headerlink" title="# route 命令"></a># route 命令</h3><ul>
+<li>ARP 地址解析协议</li>
+</ul>
+<p><a href="https://baike.baidu.com/item/%E8%B7%AF%E7%94%B1%E8%A1%A8" target="_blank" rel="noopener">https://baike.baidu.com/item/%E8%B7%AF%E7%94%B1%E8%A1%A8</a></p>
+<h3 id="nslookup-和-dig"><a href="#nslookup-和-dig" class="headerlink" title="# nslookup 和 dig"></a># nslookup 和 dig</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> nslookup www.baidu.com</span></span><br><span class="line"></span><br><span class="line">Server:		192.168.0.1</span><br><span class="line">Address:	192.168.0.1#53</span><br><span class="line"></span><br><span class="line">Non-authoritative answer:</span><br><span class="line">www.baidu.com	canonical name = www.a.shifen.com.</span><br><span class="line">Name:	www.a.shifen.com</span><br><span class="line">Address: 115.239.211.112</span><br><span class="line">Name:	www.a.shifen.com</span><br><span class="line">Address: 115.239.210.27</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> dig trace www.baidu.com</span></span><br><span class="line">;; ANSWER SECTION:</span><br><span class="line">www.baidu.com.		300	IN	CNAME	www.a.shifen.com.</span><br><span class="line">www.a.shifen.com.	300	IN	A	115.239.210.27</span><br><span class="line">www.a.shifen.com.	300	IN	A	115.239.211.112</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> host baidu.com        </span></span><br><span class="line">baidu.com has address 123.125.114.144</span><br><span class="line">baidu.com has address 220.181.57.216</span><br><span class="line">baidu.com has address 111.13.101.208</span><br><span class="line">baidu.com mail is handled by 15 mx.n.shifen.com.</span><br><span class="line">baidu.com mail is handled by 10 mx.maillb.baidu.com.</span><br><span class="line">baidu.com mail is handled by 20 mx1.baidu.com.</span><br><span class="line">baidu.com mail is handled by 20 jpmx.baidu.com.</span><br><span class="line">baidu.com mail is handled by 20 mx50.baidu.com.</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># host -a baidu.com</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># -a 参数,输出 和 dig baidu.com 一样详细</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># host -t ns baidu.com</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># -t 查询执行类型的记录</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># soa 权威域名服务器的选项</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># host -C baidu.com</span></span></span><br></pre></td></tr></table></figure>
+<p>参考: <a href="http://luodw.cc/2015/12/27/dns03/" target="_blank" rel="noopener">http://luodw.cc/2015/12/27/dns03/</a></p>
+<h3 id="arp"><a href="#arp" class="headerlink" title="# arp"></a># arp</h3><p>原理: <a href="http://blog.csdn.net/Linux_ever/article/details/50516502" target="_blank" rel="noopener">http://blog.csdn.net/Linux_ever/article/details/50516502</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看 ip 和 mac 映射</span></span><br><span class="line">arp -a</span><br><span class="line"><span class="meta">#</span><span class="bash"> 清除 eth0 网卡的arp信息</span></span><br><span class="line">arp -d -i eth0 -a</span><br><span class="line"><span class="meta">#</span><span class="bash"> 利用 tcpdump 观察 arp 信息 </span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 观察 dst,src 为 172.16.78.9 的 数据流</span></span><br><span class="line">tcpdump -i eth0 -ent '(dst 172.16.78.9 or  src 172.16.78.9)'</span><br></pre></td></tr></table></figure>
+<h3 id="Linux-下查看局域网内所有主机IP和MAC"><a href="#Linux-下查看局域网内所有主机IP和MAC" class="headerlink" title="# Linux 下查看局域网内所有主机IP和MAC"></a># Linux 下查看局域网内所有主机IP和MAC</h3><p><a href="http://blog.csdn.net/keepsmi1e/article/details/9370049" target="_blank" rel="noopener">http://blog.csdn.net/keepsmi1e/article/details/9370049</a></p>
+<p>用 nmap 对局域网扫描一遍,然后查看 arp 缓存表就可以知道局域网内 ip 对应的 mac 了.<br>nmap比较强大也可以直接扫描mac地址和端口。执行扫描之后就可以 cat/proc/net/arp查看arp缓存表了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进行 ping 扫描,打印出对扫描做出相应的主机</span></span><br><span class="line">nmap -sP 192.168.0.1/24</span><br><span class="line"><span class="meta">#</span><span class="bash"> 仅列出指定网络上的每台主机,不发送任何报文到目标主机</span></span><br><span class="line">nmap -sL 192.168.0.1/24</span><br><span class="line"><span class="meta">#</span><span class="bash"> 探测目标主机开放的端口，可以指定一个以逗号分隔的端口列表(如-PS22，23，25，80)</span></span><br><span class="line">nmap -PS 118.31.78.77</span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用UDPping探测主机</span></span><br><span class="line">nmap -PU 192.168.0.1/24</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用频率最高的扫描选项（SYN扫描,又称为半开放扫描），它不打开一个完全的TCP连接，执行得很快：　</span></span><br><span class="line">nmap -sS 192.168.1.0/24</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在文件ipandmaclist.txt文件中就可以查看ip对应的mac地址了。</span></span><br><span class="line">nmap -sP -PI -PT -oN ipandmaclist.txt 192.168.0.1/24</span><br></pre></td></tr></table></figure>
+<h3 id="traceroute"><a href="#traceroute" class="headerlink" title="# traceroute"></a># traceroute</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">traceroute www.baidu.com</span><br></pre></td></tr></table></figure>
+<h3 id="mac-相关命令"><a href="#mac-相关命令" class="headerlink" title="# mac 相关命令"></a># mac 相关命令</h3><p><a href="https://www.jianshu.com/p/f4edc2632710" target="_blank" rel="noopener">https://www.jianshu.com/p/f4edc2632710</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">使用 dig 来诊断域名信息</span><br><span class="line">dig www.oschina.net A dig www.oschina.net MX</span><br><span class="line">查看谁正在登录到你的 Mac 机器</span><br><span class="line">w</span><br><span class="line">显示系统路由表</span><br><span class="line">netstat -r</span><br><span class="line">显示活动网络连接</span><br><span class="line">netstat -an</span><br><span class="line">显示网络统计</span><br><span class="line">netstat -s</span><br></pre></td></tr></table></figure>
+<h3 id="tcpdump-抓包命令"><a href="#tcpdump-抓包命令" class="headerlink" title="# tcpdump 抓包命令"></a># tcpdump 抓包命令</h3><p><a href="http://luodw.cc/2015/12/30/network-command/" target="_blank" rel="noopener">http://luodw.cc/2015/12/30/network-command/</a></p>
+<p>强大的抓包命令.当udp程序收到icmp不可达数据包时，用户程序是不会知道的，所以用tcpdump看到，因为tcpdump可以解析所有到大网络层的数据包，包括icmp，arp等等。当然还有udp,tcp。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 默认监听所有网络接口的流量</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> tcpdump</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 监听指定网络接口</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> tcpdump -i eth0</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 监听tcp</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> tcpdump tcp</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> tcpdump udp</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 监听指定主机,可以是主机名或者ip</span></span></span><br><span class="line">tcpdump host Charles</span><br><span class="line">tcpdump host 192.168.1.151</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 监听端口</span></span></span><br><span class="line">tcpdump port 8080</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 截获主机hostname发送的所有数据</span></span></span><br><span class="line">tcpdump -i eth0 src host hostname</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 监视所有送到主机hostname的数据包</span></span></span><br><span class="line">tcpdump -i eth0 dst host hostname</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 监视指定主机和端口的数据包</span></span></span><br><span class="line">如果想要获取主机 118.31.78.77 接收或发出的telnet包，使用如下命令</span><br><span class="line">sudo tcpdump tcp port 4000 and host 118.31.78.77</span><br><span class="line">对本机的udp 123 端口进行监视 123 为ntp的服务端口</span><br><span class="line">tcpdump udp port 123</span><br></pre></td></tr></table></figure>
+<h3 id="netstat-命令"><a href="#netstat-命令" class="headerlink" title="# netstat 命令"></a># netstat 命令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 默认情况下，netstat输出的是所有已连接的tcp,udp和unix域套接字</span></span><br><span class="line">netstat | more</span><br><span class="line"><span class="meta">#</span><span class="bash"> 列出所有的端口（包括监听和未监听的） </span></span><br><span class="line">netstat -a</span><br><span class="line"><span class="meta">#</span><span class="bash"> 只列出所有的tcp连接 </span></span><br><span class="line">netstat -at</span><br><span class="line"><span class="meta">#</span><span class="bash"> 只列出所有的udp连接 </span></span><br><span class="line">netstat -au</span><br><span class="line"><span class="meta">#</span><span class="bash"> 列出所有处于监听的连接，包括tcp,udp和unix域套接字 </span></span><br><span class="line">netstat -l</span><br><span class="line"><span class="meta">#</span><span class="bash"> 只列出tcp监听端口 </span></span><br><span class="line">netstat -lt</span><br><span class="line"><span class="meta">#</span><span class="bash"> 只列出udp监听端口 </span></span><br><span class="line">netstat -lu</span><br><span class="line"><span class="meta">#</span><span class="bash"> 只列出unix域套接字监听端口 </span></span><br><span class="line">netstat -lx</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看路由表信息 netstat -r</span></span><br><span class="line"></span><br><span class="line">Routing tables</span><br><span class="line"></span><br><span class="line">Internet:</span><br><span class="line">Destination        Gateway            Flags        Refs      Use   Netif Expire</span><br><span class="line">default            192.168.0.1        UGSc           11        0     en0</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 一般有两条路由信息，一个是默认路由，即目的地地址不在本网络时，通过网络接口eth0，传到网关192.168.1.1这个也就是第一跳路由器的地址；如果目的地地址是在同一个局域网中，即与子网掩码255.255.255.0与之后=192.168.1.0，则没有网关，通过eth0广播询问即可。</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查询网络接口列表 </span></span><br><span class="line">netstat -i</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 找出程序运行的端口 </span></span><br><span class="line"></span><br><span class="line">netstat -ap | grep ssh</span><br></pre></td></tr></table></figure>
+<h3 id="ifconfig"><a href="#ifconfig" class="headerlink" title="# ifconfig"></a># ifconfig</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 启动 eth0 网卡</span></span></span><br><span class="line">ifconfig eth0 up</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 查看 eth0 网卡</span></span></span><br><span class="line">ifocnfig eth0</span><br></pre></td></tr></table></figure>
+<h3 id="ivp6"><a href="#ivp6" class="headerlink" title="# ivp6"></a># ivp6</h3><p><a href="http://test-ipv6.com/" target="_blank" rel="noopener">http://test-ipv6.com/</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 修改dns</span></span></span><br><span class="line">nameserver 8.8.8.8</span><br><span class="line">nameserver 114.114.114.114</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span><span class="bash">  应当得到一个 AAAA 记录而不出现错误 </span></span><br><span class="line">dig aaaa aaaa.v6ns.test-ipv6.com</span><br></pre></td></tr></table></figure>
+<h3 id="ufw"><a href="#ufw" class="headerlink" title="# ufw"></a># ufw</h3><p>Ubuntu 16.04 防火墙</p>
+<p>千万别手贱开启,否则 ssh 都连接不进去…vpn 遇到过..</p>
+<h3 id="ndp"><a href="#ndp" class="headerlink" title="# ndp"></a># ndp</h3><p>NDP用来发现直接相连的邻居信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ndp -an</span><br></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone">QQ空间</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+</div>
+
+            
+    
+        <a href="https://www.whatdy.com/2018/03/21/网络安全相关命令/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://www.whatdy.com/2018/03/21/网络安全相关命令/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/03/21/阿里云支持-ipv6/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    阿里云支持 ipv6
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2018/03/21/brew-常用命令/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">brew 常用命令</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/php/">php</a></p>
+                            <p class="item-title"><a href="/2018/04/06/各种实用的东东/" class="title">各种实用的东东</a></p>
+                            <p class="item-date"><time datetime="2018-04-05T16:25:01.000Z" itemprop="datePublished">2018-04-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/04/05/nginx-重写规则/" class="title">nginx 重写规则</a></p>
+                            <p class="item-date"><time datetime="2018-04-05T09:25:35.000Z" itemprop="datePublished">2018-04-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/git/">git</a></p>
+                            <p class="item-title"><a href="/2018/03/31/git-常用命令/" class="title">git 常用命令</a></p>
+                            <p class="item-date"><time datetime="2018-03-31T13:34:40.000Z" itemprop="datePublished">2018-03-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/docker/">docker</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/docker/python/">python</a></p>
+                            <p class="item-title"><a href="/2018/03/31/docker-supervisor-实现后台运行程序/" class="title">docker+supervisor 实现后台运行程序</a></p>
+                            <p class="item-date"><time datetime="2018-03-31T06:50:51.000Z" itemprop="datePublished">2018-03-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/python/">python</a></p>
+                            <p class="item-title"><a href="/2018/03/31/python-实用技巧/" class="title">python 实用技巧</a></p>
+                            <p class="item-date"><time datetime="2018-03-31T06:33:19.000Z" itemprop="datePublished">2018-03-31</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/LINUX/">LINUX</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/docker/python/">python</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">11</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">18</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/LINUX/">LINUX</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络安全/">网络安全</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/LINUX/" style="font-size: 10px;">LINUX</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/php/" style="font-size: 13.33px;">php</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/shell/" style="font-size: 13.33px;">shell</a> <a href="/tags/网络安全/" style="font-size: 13.33px;">网络安全</a>
+        </div>
+    </div>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 Zhangyouliang<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'https://www.whatdy.com/2018/03/21/网络安全相关命令/';
+        
+        this.page.identifier = '网络安全相关命令';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'http-www-whatdy-com' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
